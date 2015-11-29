@@ -1,1 +1,1 @@
-# Amazon_Portal_Extension
+# Amazon Portal Chrome Extension
