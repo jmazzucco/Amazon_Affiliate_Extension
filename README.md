@@ -1,7 +1,4 @@
 # Amazon Portal Chrome Extension
 
-Chrome will redirect Amazon.com to an Amazon Portal link added by the user
-
-Example:
-http://www.amazon.com will redirect to https://www.amazon.com/?&tag=musician-name-20
+Automatically adds an Amazon Portal parameter to the URL when visiting Amazon.com
 
