@@ -2,22 +2,13 @@
   "manifest_version": 2,
   "name": "Amazon Portal",
   "icons": {"128": "icon.png"},
+  "description": "Automatically adds an Amazon Portal parameter to the URL when visiting Amazon.com",
   "version": "0.1",
   "permissions": [
           "webRequest",
           "webRequestBlocking",
           "*://www.amazon.com/*"
         ],
-
- //  "content_scripts": [
-	//   {
-	//     "matches": [
-	//       "<all_urls>"
-	//     ],
-	//     "js": ["jquery-2.1.4.js", "content.js"]
-	//   }
-	// ],
-
 	"background": {
  		"scripts": ["background.js"]
 	}
