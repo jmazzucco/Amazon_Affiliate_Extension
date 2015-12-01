@@ -1,9 +1,10 @@
 chrome.webRequest.onBeforeRequest.addListener(
     function(details) {
-        var portal = "foo"
+        var portal = "?&tag=foobar-20";
+        var url = details.url;
 
-        if( details.url == "http://www.amazon.com/" || details.url == "https://www.amazon.com/")
-            return {redirectUrl: "https://www.amazon.com/" + portal };
+        if( (url.indexOf("amazon.com")) >= 0 && (url.indexOf(portal) < 0) )
+          return {redirectUrl: url + portal};
     },
     {urls: ["*://www.amazon.com/*"]},
     ["blocking"]);
