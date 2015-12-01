@@ -1,22 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-</head>
-<body>
-	<h3>Amazon Portals</h3>
-	<form action="/my-handling-form-page" method="post">
-    <div>
+<!doctype html>
+<html>
+  <head>
+    <script src="popup.js"></script>
+  </head>
+  <body>
+    <form>
+	    <div>
         <label for="name">Name:</label>
         <input type="text" id="name" />
-    </div>
-    <div>
-        <label for="link">Amazon Portal Link:</label>
+	    </div>
+	    <div>
+        <label for="link">Link:</label>
         <input type="text" id="link" />
-    </div>
-    <div class="button">
-        <button type="submit">Add</button>
-    </div>
-</form>
-</body>
+	    </div>
+	    <div class="button">
+        <button type="button" id="submit_btn">Submit</button>
+    	</div>
+		</form>
+    <a href="#" id="link">test</a>
+    <br/>
+    <div id="newData"></div>
+  </body>
 </html>

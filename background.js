@@ -8,4 +8,3 @@ chrome.webRequest.onBeforeRequest.addListener(
     },
     {urls: ["*://www.amazon.com/*"]},
     ["blocking"]);
-
