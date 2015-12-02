@@ -13,6 +13,7 @@ window.onload = function() {
 
 		   	for (var i = 0; i < allKeys.length; i++){
 		   		var key = allKeys[i]
+
 		   		document.getElementById('list').innerHTML = "";
 	   	 		chrome.storage.sync.get(key, function(data){
 
@@ -23,8 +24,6 @@ window.onload = function() {
 	   	 				var link = document.createTextNode("Link: " + data[property]);
 
 	   	 				newLi.appendChild(name);
-
-
 							document.getElementById('list').appendChild(newLi)
 
 							var newLi = document.createElement("li");
