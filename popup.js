@@ -1,5 +1,3 @@
-// 1. populate HTML list with arrays saved in local storage when document is loaded
-
 window.onload = function() {
 	document.getElementById('save').onclick = function() {
 		var name = document.getElementById('name').value;
@@ -12,11 +10,6 @@ window.onload = function() {
 	document.getElementById('get').onclick = function() {
 			chrome.storage.sync.get(null, function(items) {
 		    var allKeys = Object.keys(items);
-		    // var myNode = document.getElementById("newData");
-				// console.log(myNode.firstChild);
-				// while (myNode.firstChild) {
-    // 			myNode.removeChild(myNode.firstChild);
-				// }
 
 		   	for (var i = 0; i < allKeys.length; i++){
 		   		var key = allKeys[i]
@@ -25,18 +18,20 @@ window.onload = function() {
 
 	   	 			for (var property in data){
 	   	 				var newLi = document.createElement("li");
-	   	 				var txt = document.createTextNode(property + " " + data[property]);
-	   	 				newLi.appendChild(txt);
-							document.getElementById('list').appendChild(newLi
-						)};
+	   	 				var br = document.createElement("br");
+	   	 				var name = document.createTextNode("Name: " + property);
+	   	 				var link = document.createTextNode("Link: " + data[property]);
+
+	   	 				newLi.appendChild(name);
 
 
-						// console.log(data)
-					// Move this to an addElement function after you get it working
+							document.getElementById('list').appendChild(newLi)
 
-	   	 			//
-
-
+							var newLi = document.createElement("li");
+							newLi.appendChild(link);
+							document.getElementById('list').appendChild(newLi)
+							document.getElementById('list').appendChild(br)
+						};
 	   	 		});
 	   	 	};
 			});
