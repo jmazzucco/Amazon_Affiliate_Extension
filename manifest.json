@@ -9,7 +9,7 @@
           "webRequestBlocking",
 					"storage",
 					"tabs",
-          "*://www.amazon.com/*"
+          "*://*/*"
         ],
 	"background": {
  		"scripts": ["background.js"]
