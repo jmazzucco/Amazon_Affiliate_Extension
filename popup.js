@@ -11,36 +11,39 @@ window.onload = function() {
 	 	 			for (var property in data){
 	 	 				//data[property] <- portal link
 	 	 				var newP = document.createElement("p");
-	 	 				newP.innerHTML = "<input type='radio' id='"+property+"'/><label for='"+property+"'>"+property+"</label>"
+	 	 				newP.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='radio_items'>"+property+"</label>"
 	 	 				document.getElementById('radio_list').appendChild(newP);
 
-
-	 	 				//change "Test" to the value in "Checked" object
-	 	 				if (document.getElementById(property).id === "Test"){
+	 	 				if (document.getElementById(property).id === "Test"){//Test is a place holder for the value found in the Selected object in storage
 	 	 					document.getElementById(property).setAttribute("checked", "checked");
 	 	 				};
-	 	 		// 		var name = document.createTextNode(property);
-	 	 		// 		newLi.setAttribute("id", property);
-	 	 		// 		newLi.appendChild(name);
-						// document.getElementById('list').appendChild(newLi)
 					};
 	 	 		});
 	 	 	};
+	 	 	listenForEvents()
 		});
-	}
+	};
+
+	function listenForEvents(){
+		function saveItems(){
+			var radio_items = document.getElementById("Duncan");
+				console.log(radio_items);
+			}
+
+			document.getElementById('save').onclick = function() {
+				var name = document.getElementById('name').value;
+				var link = document.getElementById('link').value;
+				var obj = {};
+				obj[name] = link;
+				chrome.storage.sync.set(obj);
+				loadList()
+			};
+
+			document.getElementById('clear').onclick = function() {
+				chrome.storage.sync.clear();
+			};
+		};
 
 	loadList();
-
-	document.getElementById('save').onclick = function() {
-		var name = document.getElementById('name').value;
-		var link = document.getElementById('link').value;
-		var obj = {};
-		obj[name] = link;
-		chrome.storage.sync.set(obj);
-		loadList()
-	};
-
-	document.getElementById('clear').onclick = function() {
-		chrome.storage.sync.clear();
-	};
 };
+
