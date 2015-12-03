@@ -18,9 +18,14 @@
 	};
 
 
-	function listenForEvents(){
-			// var radio_items = document.getElementByClass(items);
-			// console.log("radio_items");
+	function listenForEvents(test){
+
+			var items = document.getElementsByClassName('items');
+			for(var i=0; i<items.length; i++)(function(i){
+			  items[i].onclick = function() {
+			      console.log("item was clicked!"+ i)
+			  }
+			})(i);
 
 			document.getElementById('save').onclick = function() {
 				var name = document.getElementById('name').value;
