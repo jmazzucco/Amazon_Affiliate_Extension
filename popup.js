@@ -5,24 +5,24 @@ window.onload = function() {
 
 	   	for (var i = 0; i < allKeys.length; i++){
 	   		var key = allKeys[i]
-
-	   		document.getElementById('list').innerHTML = "";
+	   		document.getElementById('radio_list').innerHTML = "";
 	 	 		chrome.storage.sync.get(key, function(data){
 
 	 	 			for (var property in data){
-	 	 				var newLi = document.createElement("li");
-	 	 				newLi.setAttribute("id", property);
-	 	 				var br = document.createElement("br");
-	 	 				var name = document.createTextNode("Name: " + property);
-	 	 				var link = document.createTextNode("Link: " + data[property]);
+	 	 				//data[property] <- portal link
+	 	 				var newP = document.createElement("p");
+	 	 				newP.innerHTML = "<input type='radio' id='"+property+"'/><label for='"+property+"'>"+property+"</label>"
+	 	 				document.getElementById('radio_list').appendChild(newP);
 
-	 	 				newLi.appendChild(name);
-						document.getElementById('list').appendChild(newLi)
 
-						var newLi = document.createElement("li");
-						newLi.appendChild(link);
-						document.getElementById('list').appendChild(newLi)
-						document.getElementById('list').appendChild(br)
+	 	 				//change "Test" to the value in "Checked" object
+	 	 				if (document.getElementById(property).id === "Test"){
+	 	 					document.getElementById(property).setAttribute("checked", "checked");
+	 	 				};
+	 	 		// 		var name = document.createTextNode(property);
+	 	 		// 		newLi.setAttribute("id", property);
+	 	 		// 		newLi.appendChild(name);
+						// document.getElementById('list').appendChild(newLi)
 					};
 	 	 		});
 	 	 	};
