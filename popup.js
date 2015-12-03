@@ -1,14 +1,9 @@
-window.onload = function() {
 	function loadList() {
+
 		chrome.storage.sync.get(null, function(items) {
 	    var allKeys = Object.keys(items);
-
-	   	for (var i = 0; i < allKeys.length; i++){
-	   		var key = allKeys[i]
-	   		document.getElementById('radio_list').innerHTML = "";
-	 	 		chrome.storage.sync.get(key, function(data){
-
-	 	 			for (var property in data){
+	    document.getElementById('radio_list').innerHTML = "";
+	   	for (var property in items){
 	 	 				//data[property] <- portal link
 	 	 				var newP = document.createElement("p");
 	 	 				newP.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='radio_items'>"+property+"</label>"
@@ -17,18 +12,15 @@ window.onload = function() {
 	 	 				if (document.getElementById(property).id === "Test"){//Test is a place holder for the value found in the Selected object in storage
 	 	 					document.getElementById(property).setAttribute("checked", "checked");
 	 	 				};
-					};
-	 	 		});
-	 	 	};
-	 	 	listenForEvents()
+	   	};
+	   	listenForEvents();
 		});
 	};
 
+
 	function listenForEvents(){
-		function saveItems(){
-			var radio_items = document.getElementById("Duncan");
-				console.log(radio_items);
-			}
+			// var radio_items = document.getElementByClass(items);
+			// console.log("radio_items");
 
 			document.getElementById('save').onclick = function() {
 				var name = document.getElementById('name').value;
@@ -42,8 +34,6 @@ window.onload = function() {
 			document.getElementById('clear').onclick = function() {
 				chrome.storage.sync.clear();
 			};
-		};
+	};
 
 	loadList();
-};
-
