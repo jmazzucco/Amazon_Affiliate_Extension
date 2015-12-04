@@ -1,12 +1,13 @@
 	function loadList() {
 		chrome.storage.sync.get(null, function(items) {
 	    var allItems = items;
-	    // assign key of first item is Selected object does not exist
-	    if (!allItems["selected"]) {
-    		var selectedObj = {};
-				selectedObj["selected"] = Object.keys(items)[0];
-				chrome.storage.sync.set(selectedObj);
-	    };
+
+	    //if Selected is the only object in storage, set it to "none"
+	    if (Object.keys(items).length === 1) {
+		 		var updateSelected = {};
+				updateSelected["selected"] = "none";
+				chrome.storage.sync.set(updateSelected);
+	  	};
 
 	    var selectedItem = allItems["selected"];
 
@@ -16,6 +17,17 @@
 		   	for (var property in allItems){
 	 				//add all stored object keys to radio list, expect for the "selected" object key
 	 				if(!(property === "selected")) {
+	 					// assign Selected to key of list item if only one exists
+	 					if (allItems["selected"] === "none") {
+			    		var updateSelected = {};
+							updateSelected["selected"] = property;
+							allItems["selected"] = property;
+							chrome.storage.sync.set(updateSelected);
+				    };
+
+
+
+				    var selectedItem = allItems["selected"];
 		 				var newP = document.createElement("p");
 		 				newP.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='radio_items'>"+property+"</label><button class='delete' id='"+property+"'>X</button>"
 		 				document.getElementById('radio_list').appendChild(newP);
@@ -45,10 +57,11 @@
 				delete_btns[i].onclick = function() {
 					var deleteName = delete_btns[i].id
 
-					//if deleteName === Selected value, change Selected value to first object name
-
-					chrome.storage.sync.remove(deleteName);
-					loadList();
+					chrome.storage.sync.get(null, function(items) {
+	    			var allItems = items;
+						chrome.storage.sync.remove(deleteName);
+						loadList();
+					});
 			  }
 			})(i);
 
@@ -56,8 +69,6 @@
 				var name = document.getElementById('name').value;
 				var link = document.getElementById('link').value;
 				if(name && link){
-					//if storage is empty, create a new Selected object and add name as the value
-
 					var obj = {};
 					obj[name] = link;
 					chrome.storage.sync.set(obj);
