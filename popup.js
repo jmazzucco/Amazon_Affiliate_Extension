@@ -1,6 +1,13 @@
 	function loadList() {
 		chrome.storage.sync.get(null, function(items) {
-	    var allItems = items
+	    var allItems = items;
+	    // assign key of first item is Selected object does not exist
+	    if (!allItems["selected"]) {
+    		var selectedObj = {};
+				selectedObj["selected"] = Object.keys(items)[0];
+				chrome.storage.sync.set(selectedObj);
+	    };
+
 	    var selectedItem = allItems["selected"];
 
 		  if(allItems){
@@ -37,6 +44,9 @@
 			for(var i=0; i<delete_btns.length; i++)(function(i){
 				delete_btns[i].onclick = function() {
 					var deleteName = delete_btns[i].id
+
+					//if deleteName === Selected value, change Selected value to first object name
+
 					chrome.storage.sync.remove(deleteName);
 					loadList();
 			  }
@@ -47,16 +57,13 @@
 				var link = document.getElementById('link').value;
 				if(name && link){
 					//if storage is empty, create a new Selected object and add name as the value
+
 					var obj = {};
 					obj[name] = link;
 					chrome.storage.sync.set(obj);
 					loadList();
 				};
 			};
-
-			//add new function for deleting individual items from the list
-				//when the last list item is deleted, remove the Selected object as well
-
 
 			document.getElementById('clear').onclick = function() {
 				chrome.storage.sync.clear();
