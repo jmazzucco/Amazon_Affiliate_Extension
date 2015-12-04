@@ -1,5 +1,4 @@
 	function loadList() {
-
 		chrome.storage.sync.get(null, function(items) {
 	    var allItems = items
 	    var selectedItem = allItems["selected"];
@@ -11,10 +10,8 @@
 	 				//add all stored object keys to radio list, expect for the "selected" object key
 	 				if(!(property === "selected")) {
 		 				var newP = document.createElement("p");
-		 				newP.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='radio_items'>"+property+"</label><button class='delete' id='delete-"+property+"'>X</button>"
+		 				newP.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='radio_items'>"+property+"</label><button class='delete' id='"+property+"'>X</button>"
 		 				document.getElementById('radio_list').appendChild(newP);
-
-		 				//add Delete button next to each radio list item
 
 		 				if (document.getElementById(property).id === selectedItem){
 		 					document.getElementById(property).setAttribute("checked", "checked");
@@ -36,6 +33,15 @@
 			  }
 			})(i);
 
+			var delete_btns = document.getElementsByClassName('delete');
+			for(var i=0; i<delete_btns.length; i++)(function(i){
+				delete_btns[i].onclick = function() {
+					var deleteName = delete_btns[i].id
+					chrome.storage.sync.remove(deleteName);
+					loadList();
+			  }
+			})(i);
+
 			document.getElementById('save').onclick = function() {
 				var name = document.getElementById('name').value;
 				var link = document.getElementById('link').value;
@@ -44,12 +50,13 @@
 					var obj = {};
 					obj[name] = link;
 					chrome.storage.sync.set(obj);
-					loadList()
+					loadList();
 				};
 			};
 
 			//add new function for deleting individual items from the list
 				//when the last list item is deleted, remove the Selected object as well
+
 
 			document.getElementById('clear').onclick = function() {
 				chrome.storage.sync.clear();
