@@ -11,7 +11,7 @@
 	 				//add all stored object keys to radio list, expect for the "selected" object key
 	 				if(!(property === "selected")) {
 		 				var newP = document.createElement("p");
-		 				newP.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='radio_items'>"+property+"</label>"
+		 				newP.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='radio_items'>"+property+"</label><button class='delete' id='delete-"+property+"'>X</button>"
 		 				document.getElementById('radio_list').appendChild(newP);
 
 		 				//add Delete button next to each radio list item
