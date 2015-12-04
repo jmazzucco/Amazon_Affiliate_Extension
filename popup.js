@@ -75,10 +75,6 @@
 					loadList();
 				};
 			};
-
-			document.getElementById('clear').onclick = function() {
-				chrome.storage.sync.clear();
-			};
 	};
 
 	loadList();
