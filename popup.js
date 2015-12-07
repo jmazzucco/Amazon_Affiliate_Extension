@@ -16,7 +16,10 @@
 
 		   	for (var property in allItems){
 	 				//add all stored object keys to radio list, expect for the "selected" object key
+
+
 	 				if(!(property === "selected")) {
+
 	 					// assign Selected to key of list item if only one exists
 	 					if (allItems["selected"] === "none") {
 			    		var updateSelected = {};
@@ -24,8 +27,6 @@
 							allItems["selected"] = property;
 							chrome.storage.sync.set(updateSelected);
 				    };
-
-
 
 				    var selectedItem = allItems["selected"];
 		 				var newP = document.createElement("p");
@@ -38,17 +39,30 @@
 		 			};
 		   	};
 			 };
+
+			var selectedProperty = allItems["selected"];
+		  var selecedParameter = allItems[selectedProperty];
+		  // console.log(selecedParameter);
+	   	// sendMessage(selecedParameter);
 	   	listenForEvents();
 		});
 	};
 
+	// function sendMessage(afParam){
+	// 	chrome.runtime.sendMessage({afParam: afParam});
+	// };
+
+
+
 	function listenForEvents(){
+
 			var items = document.getElementsByClassName('items');
 			for(var i=0; i<items.length; i++)(function(i){
 			  items[i].onclick = function() {
 			    var selectedObj = {};
 					selectedObj["selected"] = items[i].id;
 					chrome.storage.sync.set(selectedObj);
+					loadList();
 			  }
 			})(i);
 
@@ -75,6 +89,12 @@
 					loadList();
 				};
 			};
+
+			// ////////////////////////////////////////////////////////TEST////////////
+
+
+
+
 	};
 
 	loadList();
