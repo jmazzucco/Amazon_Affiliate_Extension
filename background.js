@@ -45,6 +45,7 @@ var reload = function(addedTabId, removedTabId){
 function paramFromStorage(){
   chrome.storage.sync.get(null, function(items) {
     param = (items[items.selected]);
+    console.log("storage " + param)
     listeners(param);
   });
   newParam();
@@ -56,6 +57,7 @@ function newParam(){
     function(request, sender, sendResponse) {
      if (request.param != param){
       param = request.param
+      console.log("onMessage " + param)
       listeners(param);
      };
   });
@@ -76,8 +78,13 @@ function listeners(param){
   function removeListeners(){
     chrome.tabs.onUpdated.removeListener(updatedListener);
     chrome.tabs.onReplaced.removeListener(reload);
-    preloadCheck();
-    addListener(param);
+
+    //add listeners is param has a value
+    if (param != undefined){
+      console.log("running listeners")
+      preloadCheck();
+      addListener(param);
+    };
   }
 
   removeListeners();
