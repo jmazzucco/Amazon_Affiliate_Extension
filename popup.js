@@ -48,46 +48,45 @@
     var urlParam = items[items.selected];
     sendMessage(urlParam);
 
-    listenForEvents();
+    onclickEvents();
   });
 };
 
 function sendMessage(urlParam){
+  //send new param to background.js
   chrome.runtime.sendMessage({param: urlParam});
 };
 
-function listenForEvents(){
+function onclickEvents(){
 
     var items = document.getElementsByClassName('items');
     for(var i=0; i<items.length; i++)(function(i){
+      //add an onclick event listener for each radio item
       items[i].onclick = function() {
-        var selectedObj = {};
-        selectedObj["selected"] = items[i].id;
-        chrome.storage.sync.set(selectedObj);
+        //when a radio item is clicked, set the 'selected' objects value as the elements id
+        chrome.storage.sync.set({"selected": items[i].id});
         affiliateList();
       }
     })(i);
 
     var delete_btns = document.getElementsByClassName('delete');
     for(var i=0; i<delete_btns.length; i++)(function(i){
+      //add an onclick event listener for each delete button
       delete_btns[i].onclick = function() {
-        var deleteName = delete_btns[i].id
-
-        chrome.storage.sync.get(null, function(items) {
-          var items = items;
-          chrome.storage.sync.remove(deleteName);
-          affiliateList();
-        });
+        //when a delete button is clicked, delete the associated object in storage
+        chrome.storage.sync.remove(delete_btns[i].id);
+        affiliateList();
       }
     })(i);
 
     document.getElementById('save').onclick = function() {
       var name = document.getElementById('name').value;
       var link = document.getElementById('link').value;
+      //if both inputs contain a value, save the values as new object in storage
       if(name && link){
-        var obj = {};
-        obj[name] = link;
-        chrome.storage.sync.set(obj);
+        var newObj = {};
+        newObj[name] = link;
+        chrome.storage.sync.set(newObj);
         affiliateList();
       };
     };
