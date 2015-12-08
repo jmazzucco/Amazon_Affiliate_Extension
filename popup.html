@@ -4,23 +4,21 @@
     <script src="popup.js"></script>
   </head>
   <body>
-    <h3 id = "test">Amazon Portals</h3>
-	  <form id="radio_list">
-		</form>
+    <h3 id="test">Amazon Portals</h3>
+	  <div id="radio_list">
+		<!-- list items will be dynamically added here -->
+		</div>
 		<br/>
     <form>
 	    <div>
         <label for="name">Name:</label>
-        <input type="text" id="name" />
+        <input type="text" id="name" placeholder="John Doe" />
 	    </div>
 	    <div>
-        <label for="link">Link:</label>
-        <input type="text" id="link" />
+        <label for="link">Affiliate Link:</label>
+        <input type="text" id="link" placeholder="www.amazon.com/?&tag=test-20"/>
 	    </div>
 	    <input type="button" id="save" value="Save">
-<!-- 	    <input type="button" id="site1" value="Site 1">
-	    <input type="button" id="site2" value="Site 2">
-	    <input type="button" id="reset" value="Reset"> -->
 		</form>
   </body>
 </html>
