@@ -1,48 +1,53 @@
- function loadList() {
+ function affiliateList() {
+
   //get all objects in storage
   chrome.storage.sync.get(null, function(items) {
-    // var items = items;
 
     //if all list items have been deleted, set the value of "selected" to "none"
     if (Object.keys(items).length === 1) {
       chrome.storage.sync.set({"selected": "none"});
     };
-
-    var selectedItem = items["selected"];
+    var selectedName = items["selected"];
 
     if(items){
+      //clear all child elements in 'radio_list' div
       document.getElementById('radio_list').innerHTML = "";
 
+      //iterate through all objects
       for (var property in items){
-        //add all stored object keys to radio list, expect for the "selected" object key
 
-
+        //ignore "selected" object
         if(!(property === "selected")) {
 
-          // assign Selected to key of list item if only one exists
+          //auto-select the first property
           if (items["selected"] === "none") {
-            var updateSelected = {};
-            updateSelected["selected"] = property;
+
+            //update 'items' with new 'selected' value
             items["selected"] = property;
-            chrome.storage.sync.set(updateSelected);
+
+            //update 'selected' value in storage
+            chrome.storage.sync.set({"selected": property});
           };
 
-          var selectedItem = items["selected"];
+          //get new "selected" value
+          var selectedName = items["selected"];
+
+          //display objects in the radio_list div
           var newP = document.createElement("p");
           newP.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='radio_items'>"+property+"</label><button class='delete' id='"+property+"'>X</button>"
           document.getElementById('radio_list').appendChild(newP);
 
-          if (document.getElementById(property).id === selectedItem){
+          //set radio button of selected object as checked
+          if (document.getElementById(property).id === selectedName){
             document.getElementById(property).setAttribute("checked", "checked");
           };
         };
       };
      };
 
-    var selectedProperty = items["selected"];
-    var urlParam = items[selectedProperty];
-    // console.log(selecedParameter);
+    var urlParam = items[items.selected];
     sendMessage(urlParam);
+
     listenForEvents();
   });
 };
@@ -59,7 +64,7 @@ function listenForEvents(){
         var selectedObj = {};
         selectedObj["selected"] = items[i].id;
         chrome.storage.sync.set(selectedObj);
-        loadList();
+        affiliateList();
       }
     })(i);
 
@@ -71,7 +76,7 @@ function listenForEvents(){
         chrome.storage.sync.get(null, function(items) {
           var items = items;
           chrome.storage.sync.remove(deleteName);
-          loadList();
+          affiliateList();
         });
       }
     })(i);
@@ -83,9 +88,9 @@ function listenForEvents(){
         var obj = {};
         obj[name] = link;
         chrome.storage.sync.set(obj);
-        loadList();
+        affiliateList();
       };
     };
 };
 
-loadList();
+affiliateList();
