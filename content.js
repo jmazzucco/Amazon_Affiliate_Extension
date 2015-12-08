@@ -1,7 +1,7 @@
 chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
-   if (msg.action == 'SendIt') {
+   if (msg.param) {
 
-      window.location.href = window.location.href +'?TEST-20';
+      window.location.href = window.location.href +msg.param;
       msg.action = false;
    };
 });

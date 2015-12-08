@@ -41,18 +41,16 @@
 			 };
 
 			var selectedProperty = allItems["selected"];
-		  var selecedParameter = allItems[selectedProperty];
+		  var urlParam = allItems[selectedProperty];
 		  // console.log(selecedParameter);
-	   	// sendMessage(selecedParameter);
+	   	sendMessage(urlParam);
 	   	listenForEvents();
 		});
 	};
 
-	// function sendMessage(afParam){
-	// 	chrome.runtime.sendMessage({afParam: afParam});
-	// };
-
-
+	function sendMessage(urlParam){
+		chrome.runtime.sendMessage({param: urlParam});
+	};
 
 	function listenForEvents(){
 
