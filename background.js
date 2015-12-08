@@ -4,8 +4,8 @@ var changeUrl = false;
 var amazonStatus = false;
 
 var updatedListener = function(tabId,changeInfo,tab){
-			// console.log("updatedListener")
-			// console.log(param);
+    	//need to add: if url already contains a URL param but the param doesn't match the one being passed from addListener, remove the old param (everything proceeding the '?') and add the new one.
+
     	if (changeInfo.url == "http://www.amazon.com/"){
     		changeUrl = true;
 	    	amazonStatus = true;
@@ -28,7 +28,6 @@ var updatedListener = function(tabId,changeInfo,tab){
 };
 
 var reload = function(addedTabId, removedTabId){
-	console.log("reloading")
 		chrome.tabs.getSelected(null,function(tab) {
  		if(tab.url.indexOf("www.amazon.com") > -1){
 	 		chrome.tabs.reload(addedTabId);
