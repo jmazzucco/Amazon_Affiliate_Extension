@@ -59,64 +59,64 @@ function sendMessage(urlParam){
 
 function onclickEvents(){
 
-    var items = document.getElementsByClassName('items');
-    for(var i=0; i<items.length; i++)(function(i){
-      //add an onclick event listener for each radio item
-      items[i].onclick = function() {
-        //when a radio item is clicked, set the 'selected' objects value as the elements id
-        chrome.storage.sync.set({"selected": items[i].id});
-        affiliateList();
-      }
-    })(i);
+  var items = document.getElementsByClassName('items');
+  for(var i=0; i<items.length; i++)(function(i){
+    //add an onclick event listener for each radio item
+    items[i].onclick = function() {
+      //when a radio item is clicked, set the 'selected' objects value as the elements id
+      chrome.storage.sync.set({"selected": items[i].id});
+      affiliateList();
+    }
+  })(i);
 
-    var delete_btns = document.getElementsByClassName('delete');
-    for(var i=0; i<delete_btns.length; i++)(function(i){
-      //add an onclick event listener for each delete button
-      delete_btns[i].onclick = function() {
-        //when a delete button is clicked, delete the associated object in storage
-        chrome.storage.sync.remove(delete_btns[i].id);
-        affiliateList();
-      }
-    })(i);
+  var delete_btns = document.getElementsByClassName('delete');
+  for(var i=0; i<delete_btns.length; i++)(function(i){
+    //add an onclick event listener for each delete button
+    delete_btns[i].onclick = function() {
+      //when a delete button is clicked, delete the associated object in storage
+      chrome.storage.sync.remove(delete_btns[i].id);
+      affiliateList();
+    }
+  })(i);
 
-    function getParamFromLink(link){
-      var tagindex = link.indexOf('tag');
+  function getParamFromLink(link){
+    var tagindex = link.indexOf('tag');
 
-      //return false if the link does not contain 'tag'
-      if(tagindex == -1) {return false};
+    //return false if the link does not contain 'tag'
+    if(tagindex == -1) {return false};
 
-      //get substring of all characters following and including 'tag'
-      var firstSub = link.substring(tagindex);
+    //get substring of all characters following and including 'tag'
+    var firstSub = link.substring(tagindex);
 
-      //get index of first occurance of '&' in substring
-      var ampIndex = firstSub.indexOf('&');
+    //get index of first occurance of '&' in substring
+    var ampIndex = firstSub.indexOf('&');
 
-      if (ampIndex != -1){
-        var finalSub = firstSub.substring(0, ampIndex);
-      }else{
-        return firstSub;
-      }
-      return finalSub;
-    };
+    if (ampIndex != -1){
+      var finalSub = firstSub.substring(0, ampIndex);
+    }else{
+      return firstSub;
+    }
+    return finalSub;
+  };
 
-    document.getElementById('save').onclick = function() {
-      var name = document.getElementById('name').value;
-      var link = document.getElementById('link').value;
+  document.getElementById('save').onclick = function() {
+    var name = document.getElementById('name').value;
+    var link = document.getElementById('link').value;
 
-      //if both inputs contain a value, add these values to a new object in storage
-      if(name && link){
-        var param = getParamFromLink(link);
-        if(param){
-          var newObj = {};
-          newObj[name] = param;
-          chrome.storage.sync.set(newObj);
-        } else {
-          //to do: show this error in popup.js
-          console.log("affiliate link is invalid")
-        };
-        affiliateList();
+    //if both inputs contain a value, add these values to a new object in storage
+    if(name && link){
+      var param = getParamFromLink(link);
+      if(param){
+        var newObj = {};
+        newObj[name] = param;
+        chrome.storage.sync.set(newObj);
+      } else {
+        //to do: show this error in popup.js
+        console.log("affiliate link is invalid")
       };
+      affiliateList();
     };
+  };
 };
 
 affiliateList();
