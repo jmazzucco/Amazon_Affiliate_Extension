@@ -33,9 +33,9 @@
           var selectedName = items["selected"];
 
           //display objects in the radio_list div
-          var newP = document.createElement("p");
-          newP.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='radio_items'>"+property+"</label><button class='delete' id='"+property+"'>X</button>"
-          document.getElementById('radio_list').appendChild(newP);
+          var newDiv = document.createElement("div");
+          newDiv.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete' id='"+property+"'>X</button>"
+          document.getElementById('radio_list').appendChild(newDiv);
 
           //set radio button of selected object as checked
           if (document.getElementById(property).id === selectedName){
