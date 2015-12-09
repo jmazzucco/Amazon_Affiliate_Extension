@@ -99,20 +99,35 @@ function onclickEvents(){
     return finalSub;
   };
 
+
   document.getElementById('save').onclick = function() {
     var name = document.getElementById('name').value;
     var link = document.getElementById('link').value;
 
-    //if both inputs contain a value, add these values to a new object in storage
+    //both inputs should have a value
     if(name && link){
+
+      //if a param exists in the given link
       var param = getParamFromLink(link);
       if(param){
+
+        //return if name already exists in the affiliate list
+        if (document.getElementById(name)){
+          console.log("aready exists");
+          return;
+        }
+
+        //create new object with name and param and save it to storage
+        console.log("saving")
         var newObj = {};
         newObj[name] = param;
         chrome.storage.sync.set(newObj);
+
       } else {
+        //return if param doesn't exists in the given link
         //to do: show this error in popup.js
-        console.log("affiliate link is invalid")
+        console.log("affiliate link is invalid");
+        return;
       };
       affiliateList();
     };
