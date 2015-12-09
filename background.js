@@ -79,9 +79,8 @@ function listeners(param){
     chrome.tabs.onUpdated.removeListener(updatedListener);
     chrome.tabs.onReplaced.removeListener(reload);
 
-    //add listeners is param has a value
+    //add listeners if param has a value
     if (param != undefined){
-      console.log("running listeners")
       preloadCheck();
       addListener(param);
     };

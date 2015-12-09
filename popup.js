@@ -79,11 +79,27 @@ function onclickEvents(){
       }
     })(i);
 
+    function getParamFromLink(link){
+      var tagindex = link.indexOf('tag');
+      var firstSub = link.substring(tagindex);
+      var ampIndex = firstSub.indexOf('&');
+
+      if (ampIndex != -1){
+        var finalSub = firstSub.substring(0, ampIndex);
+      }else{
+        return firstSub;
+      }
+      return finalSub;
+    };
+
     document.getElementById('save').onclick = function() {
       var name = document.getElementById('name').value;
       var link = document.getElementById('link').value;
+
       //if both inputs contain a value, save the values as new object in storage
       if(name && link){
+        var test = getParamFromLink(link);
+        alert(test);
         var newObj = {};
         newObj[name] = link;
         chrome.storage.sync.set(newObj);
