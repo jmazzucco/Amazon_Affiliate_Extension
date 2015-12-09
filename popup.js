@@ -34,7 +34,7 @@
 
           //display objects in the radio_list div
           var newDiv = document.createElement("div");
-          newDiv.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete' id='"+property+"'>X</button>"
+          newDiv.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button>"
           document.getElementById('radio_list').appendChild(newDiv);
 
           //set radio button of selected object as checked
@@ -44,6 +44,7 @@
         };
       };
      };
+
 
     var urlParam = items[items.selected];
     sendMessage(urlParam);
@@ -69,7 +70,7 @@ function onclickEvents(){
     }
   })(i);
 
-  var delete_btns = document.getElementsByClassName('delete');
+  var delete_btns = document.getElementsByClassName('delete-box');
   for(var i=0; i<delete_btns.length; i++)(function(i){
     //add an onclick event listener for each delete button
     delete_btns[i].onclick = function() {
