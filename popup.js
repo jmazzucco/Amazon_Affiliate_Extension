@@ -81,6 +81,8 @@ function onclickEvents(){
 
     function getParamFromLink(link){
       var tagindex = link.indexOf('tag');
+      if(tagindex == -1) {return false};
+
       var firstSub = link.substring(tagindex);
       var ampIndex = firstSub.indexOf('&');
 
@@ -98,11 +100,15 @@ function onclickEvents(){
 
       //if both inputs contain a value, save the values as new object in storage
       if(name && link){
-        var test = getParamFromLink(link);
-        alert(test);
-        var newObj = {};
-        newObj[name] = link;
-        chrome.storage.sync.set(newObj);
+        var param = getParamFromLink(link);
+        if(param){
+          console.log(param);
+          var newObj = {};
+          newObj[name] = param;
+          chrome.storage.sync.set(newObj);
+        } else {
+          console.log("affiliate link is invalid")
+        };
         affiliateList();
       };
     };
