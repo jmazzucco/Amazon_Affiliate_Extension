@@ -81,9 +81,14 @@ function onclickEvents(){
 
     function getParamFromLink(link){
       var tagindex = link.indexOf('tag');
+
+      //return false if the link does not contain 'tag'
       if(tagindex == -1) {return false};
 
+      //get substring of all characters following and including 'tag'
       var firstSub = link.substring(tagindex);
+
+      //get index of first occurance of '&' in substring
       var ampIndex = firstSub.indexOf('&');
 
       if (ampIndex != -1){
@@ -98,15 +103,15 @@ function onclickEvents(){
       var name = document.getElementById('name').value;
       var link = document.getElementById('link').value;
 
-      //if both inputs contain a value, save the values as new object in storage
+      //if both inputs contain a value, add these values to a new object in storage
       if(name && link){
         var param = getParamFromLink(link);
         if(param){
-          console.log(param);
           var newObj = {};
           newObj[name] = param;
           chrome.storage.sync.set(newObj);
         } else {
+          //to do: show this error in popup.js
           console.log("affiliate link is invalid")
         };
         affiliateList();
