@@ -1,3 +1,7 @@
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+
  function affiliateList() {
 
   //get all objects in storage
@@ -47,6 +51,11 @@
         };
       };
      };
+
+     var totalItems = document.getElementsByClassName('items');
+     if (totalItems.length <= 0){
+      document.getElementById('radio_list').innerHTML = "OHAI";
+     }
 
     var urlParam = items[items.selected];
     // console.log (urlParam)
@@ -114,12 +123,12 @@ function onclickEvents(){
   }
 
   document.getElementById('save').onclick = function() {
-    var totalItem = document.getElementsByClassName('items')
+    var totalItems = document.getElementsByClassName('items')
     var name = document.getElementById('name').value;
     var link = document.getElementById('link').value;
     var error = document.getElementById('error')
 
-    if (totalItem.length >= 7){
+    if (totalItems.length >= 7){
       error.innerHTML = "Max of 7 affiliates"
           return;
     }
@@ -161,5 +170,6 @@ function onclickEvents(){
     };
   };
 };
+
 
 affiliateList();
