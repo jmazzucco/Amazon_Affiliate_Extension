@@ -42,11 +42,6 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
   padding: 5px;
 }
 
-.delete-box {
-  float: right;
-  margin-right: 10px;
-}
-
 #radio_list div:last-child {
   border-bottom: 0
 }
@@ -76,7 +71,7 @@ input + label:hover, button, #save {
   color: #999;
   text-shadow: 1px 1px 0 #fff;
   font: 16px Wellfleet, sans-serif;
-  padding: 0 10px;
+  padding: 0;
 }
 
 .light input[type="radio"] + label span {
@@ -99,6 +94,7 @@ input + label:hover, button, #save {
 
 .delete-box {
   display: inline-block;
+  float: right;
   border: none;
   border-radius: 5px;
   background-color: grey;
@@ -118,8 +114,8 @@ input + label:hover, button, #save {
 }
 
 .fa-lg {
-    font-size: 1em;
-    vertical-align: 0;
+  font-size: 1em;
+  vertical-align: 0;
 }
 
 /*----------Form---------------*/
@@ -143,4 +139,16 @@ form {
 
 #name {
   margin-top: 20px;
+}
+
+.footer {
+  background-color:grey;
+  border-bottom-right-radius: 2px;
+  border-bottom-left-radius: 2px;
+  height: 25px;
+}
+
+.info {
+  background-color:grey;
+  border: none;
 }
