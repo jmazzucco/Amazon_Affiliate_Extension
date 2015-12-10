@@ -109,6 +109,10 @@ function onclickEvents(){
     error.innerHTML = "";
   }
 
+  function truncate(name) {
+    return name.substring(0, 18) + "...";
+  }
+
   document.getElementById('save').onclick = function() {
     var totalItem = document.getElementsByClassName('items')
     var name = document.getElementById('name').value;
@@ -120,8 +124,13 @@ function onclickEvents(){
           return;
     }
 
+
+
     //both inputs should have a value
     if(name && link){
+
+      if(name.length >= 22){
+        name = truncate(name)}
 
       //if a param exists in the given link
       var param = getParamFromLink(link);
