@@ -1,6 +1,4 @@
 $(document).ready(function(){
-    $('[data-toggle="popover"]').popover();
-});
 
  function affiliateList() {
 
@@ -41,8 +39,15 @@ $(document).ready(function(){
           var selectedName = items["selected"];
           //display objects in the radio_list div
           var newDiv = document.createElement("div");
-          newDiv.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><button class='link-box' data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-link'></i></button>"
+          newDiv.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><a href='#' data-toggle='popover' data-trigger='focus' data-placement='left' data-content='Affiliate ID: "+items[property]+"' class='link-box' data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-link'></i></a>"
           document.getElementById('radio_list').appendChild(newDiv);
+
+          // if ($('.main-container')){
+           // $('.main-container').css({"backgroundColor": "rgba(0,0,255,0.50)"});
+           $('[data-toggle="popover"]').popover();
+          // }
+
+
 
           //set radio button of selected object as checked
           if (document.getElementById(property).id === selectedName){
@@ -54,7 +59,7 @@ $(document).ready(function(){
 
      var totalItems = document.getElementsByClassName('items');
      if (totalItems.length <= 0){
-      document.getElementById('radio_list').innerHTML = "OHAI";
+      document.getElementById('radio_list').innerHTML = "<a href='#' data-toggle='popover' title='Popover Header' data-content='Some content inside the popover'>Toggle popover</a>";
      }
 
     var urlParam = items[items.selected];
@@ -173,3 +178,7 @@ function onclickEvents(){
 
 
 affiliateList();
+
+
+    // $('.main-container').popover();
+});
