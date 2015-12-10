@@ -31,10 +31,9 @@
 
           //get new "selected" value
           var selectedName = items["selected"];
-
           //display objects in the radio_list div
           var newDiv = document.createElement("div");
-          newDiv.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button>"
+          newDiv.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><button class='link-box' data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-link'></i></button>"
           document.getElementById('radio_list').appendChild(newDiv);
 
           //set radio button of selected object as checked
@@ -45,8 +44,8 @@
       };
      };
 
-
     var urlParam = items[items.selected];
+    // console.log (urlParam)
     sendMessage(urlParam);
 
     onclickEvents();

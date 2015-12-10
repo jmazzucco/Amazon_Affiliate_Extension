@@ -36,6 +36,7 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
   width: 100%;
   padding: 5px 0;
   border-bottom: 1px #eaeaea solid;
+  padding-top: 8px;
 }
 
 #radio_list input {
@@ -92,7 +93,7 @@ input + label:hover, button, #save {
 
 /*--------Delete Button--------*/
 
-.delete-box {
+.delete-box, .link-box {
   display: inline-block;
   float: right;
   border: none;
@@ -101,6 +102,7 @@ input + label:hover, button, #save {
   cursor: pointer;
   opacity: 0.2;
   padding: 0 4px;
+  margin-left: 3px;
 }
 
 .delete-box:hover{
@@ -108,7 +110,12 @@ input + label:hover, button, #save {
   background-color: #e74c3c;
 }
 
-.fa-times {
+.link-box:hover{
+  opacity: 1;
+  background-color: #000;
+}
+
+.fa-times, .fa-link {
   font-size: 3px;
   color: #fff;
 }
