@@ -159,3 +159,16 @@ form {
   background-color:grey;
   border: none;
 }
+
+.error-container {
+  display: inline-block;
+  float: right;
+  max-width: 55%;
+  font-size: 0.8em;
+  margin-right: 15px;
+
+}
+#error {
+  font-style:  italic;
+  color: red;
+}

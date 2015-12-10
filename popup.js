@@ -9,6 +9,10 @@
     };
     var selectedName = items["selected"];
 
+
+
+
+
     if(items){
       //clear all child elements in 'radio_list' div
       document.getElementById('radio_list').innerHTML = "";
@@ -100,9 +104,21 @@ function onclickEvents(){
   };
 
 
+  function clearForm() {
+    document.getElementById("form").reset();
+    error.innerHTML = "";
+  }
+
   document.getElementById('save').onclick = function() {
+    var totalItem = document.getElementsByClassName('items')
     var name = document.getElementById('name').value;
     var link = document.getElementById('link').value;
+    var error = document.getElementById('error')
+
+    if (totalItem.length >= 7){
+      error.innerHTML = "Max of 7 affiliates"
+          return;
+    }
 
     //both inputs should have a value
     if(name && link){
@@ -111,25 +127,28 @@ function onclickEvents(){
       var param = getParamFromLink(link);
       if(param){
 
+        //only save if list less than 9 items are already in list
+
         //return if name already exists in the affiliate list
         if (document.getElementById(name)){
-          console.log("aready exists");
+          error.innerHTML = "Name or link aready exists"
           return;
         }
 
-        //create new object with name and param and save it to storage
-        console.log("saving")
-        var newObj = {};
-        newObj[name] = param;
-        chrome.storage.sync.set(newObj);
-
       } else {
         //return if param doesn't exists in the given link
-        //to do: show this error in popup.js
-        console.log("affiliate link is invalid");
+        error.innerHTML = "Affiliate link is invalid";
         return;
       };
+
+      //create new object with name and param and save it to storage
+
+      var newObj = {};
+      newObj[name] = param;
+      chrome.storage.sync.set(newObj);
+
       affiliateList();
+      clearForm();
     };
   };
 };

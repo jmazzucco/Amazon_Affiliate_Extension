@@ -15,22 +15,28 @@
         <h3 id="test">Amazon Affiliates</h3>
       </div>
   	  <div class="container light" id="radio_list">
-  		  <!-- list items will be dynamically added here -->
+  		  <!-- list items will be dynamically added here from popup.js-->
   		</div>
 
       <div class="form-container">
-        <form>
+        <form id="form">
     	    <div>
+
+          <!-- disable autocomplete on inputs  -->
+
             <input type="text" class="form-control" id="name" placeholder="Name" />
     	    </div>
     	    <div>
             <input type="text" class="form-control" id="link" placeholder="Link"/>
     	    </div>
-
           <div class="save">
     	     <input type="button" class="btn btn-primary" id="save" value="Add">
     		  </div>
-
+          <div class='error-container'>
+            <p id='error'>
+              <!-- popup.js will inject error messages here -->
+            </p>
+          </div>
         </form>
       </div>
 
@@ -38,7 +44,5 @@
         <!-- <button class='info'><i class="fa fa-info-circle"></i></button> -->
       <div>
     </div>
-
-
   </body>
 </html>
