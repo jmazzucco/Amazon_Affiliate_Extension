@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="stylesheet" type="text/css" href="bootstrap.min.css">
 
@@ -12,12 +13,19 @@
       <div class="header">
         <h3 id="test">Amazon Affiliates</h3>
       </div>
-  	  <div class="container light" id="radio_list">
-  		  <!-- list items will be dynamically added here from popup.js-->
-  		</div>
+
+      <div id="test">
+    	  <div class="container light" id="radio_list">
+    		  <!-- list items will be dynamically added here from popup.js-->
+    		</div>
+
+        <div id="description_box" style="display: inline-block">
+          <p>Support your favourite artists, podcasts and websites. After you add and select an Amazon affiliate, Chrome will automatically use their link whenever you purchase something from Amazon.com</p>
+        </div>
+      </div>
 
       <div class="form-container">
-        <form id="form">
+        <form id="form" autocomplete="off">
     	    <div>
           <!-- disable autocomplete on inputs  -->
             <input type="text" class="form-control" id="name" placeholder="Name" />

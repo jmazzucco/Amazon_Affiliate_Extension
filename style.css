@@ -16,11 +16,14 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
   display: inline-block;
   width: 100%;
   font-size: 1.3em;
-  background-color:grey;
+  background-color:rgb(80,80,80);
 }
 
 .header h3 {
   text-align: center;
+  color: #659CEF;
+  font-size: 30px;
+  letter-spacing: 2px;
 }
 
 #radio_list, .form-container {
@@ -149,7 +152,7 @@ form {
 }
 
 .footer {
-  background-color:grey;
+  background-color: rgb(80,80,80);
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px;
   height: 25px;
@@ -169,6 +172,66 @@ form {
 
 }
 #error {
-  font-style:  italic;
+  font-style: italic;
   color: red;
+}
+
+#description_box {
+  position: relative;
+  z-index: 1; /* prevent shadows falling behind containers with backgrounds */
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#description_box p {
+  position: relative;
+  float: left;
+  width: 250px;
+  height: 175px;
+  padding: 15px;
+  border: 1px solid #efefef;
+  margin: 0 30px 30px 0;
+  background: rgb(255, 253, 243);
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+  -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+}
+
+
+#description_box p:before,
+#description_box p:after {
+  content: '';
+  z-index: -1;
+  position: absolute;
+  left: 10px;
+  bottom: 9px;
+  width: 70%;
+  max-width: 300px; /* avoid rotation causing ugly appearance at large container widths */
+  max-height: 100px;
+  height: 55%;
+  -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  -webkit-transform: skew(-15deg) rotate(-6deg);
+  -moz-transform: skew(-15deg) rotate(-6deg);
+  -ms-transform: skew(-15deg) rotate(-6deg);
+  -o-transform: skew(-15deg) rotate(-6deg);
+  transform: skew(-15deg) rotate(-6deg);
+}
+
+#description_box p:after {
+  left: auto;
+  right: 10px;
+  -webkit-transform: skew(15deg) rotate(6deg);
+  -moz-transform: skew(15deg) rotate(6deg);
+  -ms-transform: skew(15deg) rotate(6deg);
+  -o-transform: skew(15deg) rotate(6deg);
+  transform: skew(15deg) rotate(6deg);
+}
+
+#description_box p {
+  margin-left: 25px;
+  font-family: helvetica, sans-serif;
 }

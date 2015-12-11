@@ -8,12 +8,13 @@ $(document).ready(function(){
     //if all list items have been deleted, set the value of "selected" to "none"
     if (Object.keys(items).length === 1) {
       chrome.storage.sync.set({"selected": "none"});
+
+        //fix - error when style = null
+       document.getElementById('description_box').style.display = "block";
+    } else {
+       document.getElementById('description_box').style.display = "none";
     };
     var selectedName = items["selected"];
-
-
-
-
 
     if(items){
       //clear all child elements in 'radio_list' div
@@ -57,10 +58,10 @@ $(document).ready(function(){
       };
      };
 
-     var totalItems = document.getElementsByClassName('items');
-     if (totalItems.length <= 0){
-      document.getElementById('radio_list').innerHTML = "<a href='#' data-toggle='popover' title='Popover Header' data-content='Some content inside the popover'>Toggle popover</a>";
-     }
+     // var totalItems = document.getElementsByClassName('items');
+     // if (totalItems.length <= 0){
+
+     // }
 
     var urlParam = items[items.selected];
     // console.log (urlParam)
