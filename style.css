@@ -24,7 +24,7 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
   float:left;
   height: 60px;
   width: 60px;
-  margin: 10px 5px 10px 45px;
+  margin: 10px 5px 10px 47px;
   border: 3px solid white;
   background: grey;
   border-radius: 50%;
@@ -170,6 +170,24 @@ form {
   border-bottom-right-radius: 2px;
   border-bottom-left-radius: 2px;
   height: 25px;
+  padding: 3px;
+}
+
+.footer * {
+  display: inline-block;
+  float: right;
+  color: rgb(115, 115, 115);
+  padding: 2px;
+}
+
+.footer i {
+  font-size: 1.3em;
+  padding: 0;
+}
+
+.footer p {
+ margin-bottom: 0;
+ font-size: 0.9em;
 }
 
 .info {
