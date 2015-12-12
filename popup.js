@@ -40,7 +40,8 @@ $(document).ready(function(){
           var selectedName = items["selected"];
           //display objects in the radio_list div
           var newDiv = document.createElement("div");
-          newDiv.innerHTML = "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><a href='#' data-toggle='popover' data-trigger='focus' data-placement='left' data-content='Affiliate ID: "+items[property]+"' class='link-box' data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-link'></i></a>"
+          newDiv.innerHTML =
+          "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><a href='#' data-toggle='popover' data-trigger='focus' data-placement='left' data-content='Original Link: <br/>Affiliate ID: "+items[property]+"' data-html='true' class='link-box' data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-link'></i></a>"
           document.getElementById('radio_list').appendChild(newDiv);
 
           // if ($('.main-container')){
@@ -139,8 +140,6 @@ function onclickEvents(){
           return;
     }
 
-
-
     //both inputs should have a value
     if(name && link){
 
@@ -177,9 +176,6 @@ function onclickEvents(){
   };
 };
 
-
 affiliateList();
 
-
-    // $('.main-container').popover();
 });

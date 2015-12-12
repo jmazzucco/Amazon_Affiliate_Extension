@@ -180,15 +180,26 @@ form {
   padding: 2px;
 }
 
+.footer a{
+  padding: 0;
+}
+
 .footer i {
   font-size: 1.3em;
-  padding: 0;
+  padding: 0 3px;
+}
+
+.footer i:hover{
+  color: rgb(187, 187, 187);
 }
 
 .footer p {
  margin-bottom: 0;
- font-size: 0.9em;
+ font-size: 0.8em;
+ padding-bottom: 0;
 }
+
+
 
 .info {
   background-color:grey;
