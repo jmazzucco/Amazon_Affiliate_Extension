@@ -12,6 +12,6 @@ chrome.extension.onMessage.addListener(function(msg, sender, sendResponse) {
     }
 
     //append current URL with the param
-    window.location.href = url +'&'+ msg.param;
+    window.location.href = url +'&tag'+ msg.param;
   };
 });

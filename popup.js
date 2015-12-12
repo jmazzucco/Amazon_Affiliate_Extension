@@ -41,7 +41,7 @@ $(document).ready(function(){
           //display objects in the radio_list div
           var newDiv = document.createElement("div");
           newDiv.innerHTML =
-          "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><a href='#' data-toggle='popover' data-trigger='focus' data-placement='left' data-content='Original Link: <br/>Affiliate ID: "+items[property]+"' data-html='true' class='link-box' data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-link'></i></a>"
+          "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><a href='#' data-toggle='popover' data-placement='left' data-content='<b>Link:</b><div id=&#39;content&#39;>https://www.amazon.com/?&tag=feraud-20</div> <br/><b>Affiliate ID:</b><br/>"+items[property]+"' data-html='true' class='link-box' data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-link'></i></a>"
           document.getElementById('radio_list').appendChild(newDiv);
 
           // if ($('.main-container')){
@@ -106,13 +106,13 @@ function onclickEvents(){
     if(tagindex == -1) {return false};
 
     //get substring of all characters following and including 'tag'
-    var firstSub = link.substring(tagindex);
+    var firstSub = link.substring(tagindex + 3);
 
     //get index of first occurance of '&' in substring
     var ampIndex = firstSub.indexOf('&');
 
     if (ampIndex != -1){
-      var finalSub = firstSub.substring(0, ampIndex);
+      var finalSub = firstSub.substring(3, ampIndex);
     }else{
       return firstSub;
     }
