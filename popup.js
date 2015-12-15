@@ -45,7 +45,7 @@ $(document).ready(function(){
           //display objects in the radio_list div
           var newDiv = document.createElement("div");
           newDiv.innerHTML =
-          "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><a href='#' data-toggle='popover' data-trigger='focus' data-placement='left' data-content='<b>Affiliate ID:</b><br/>"+items[property]+"' class='link-box' data-html='true'  data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-link'></i></a>"
+          "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><a href='#' data-toggle='popover' data-trigger='focus' data-placement='left' data-content='<b>Affiliate ID:</b><br/>"+items[property]+"' class='link-box' data-html='true'  data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-user'></i></a>"
           document.getElementById('radio_list').appendChild(newDiv);
 
           $('[data-toggle="popover"]').popover();
@@ -137,8 +137,10 @@ function onclickEvents(){
     //both inputs should have a value
     if(name && link){
 
-      if(name.length >= 22){
-        name = truncate(name)}
+       if(name.length >= 17){
+         error.innerHTML = "Name cannot be over 16 characters"
+         return;
+        };
 
       //if a param exists in the given link
       var param = getParamFromLink(link);
@@ -148,7 +150,7 @@ function onclickEvents(){
 
         //return if name already exists in the affiliate list
         if (document.getElementById(name)){
-          error.innerHTML = "Name or link aready exists"
+          error.innerHTML = "Name or link already exists"
           return;
         }
 

@@ -134,7 +134,7 @@ input + label:hover, button, #save {
   background-color: #000;
 }
 
-.fa-times, .fa-link {
+.fa-times, .fa-user {
   font-size: 3px;
   color: #fff;
 }
@@ -201,8 +201,6 @@ form {
  padding-bottom: 0;
 }
 
-
-
 .info {
   background-color:grey;
   border: none;
@@ -211,7 +209,8 @@ form {
 .error-container {
   display: inline-block;
   float: right;
-  max-width: 55%;
+  text-align: right;
+  max-width: 65%;
   font-size: 0.8em;
   margin-right: 15px;
 
