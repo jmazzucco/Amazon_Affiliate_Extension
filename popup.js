@@ -40,13 +40,12 @@ $(document).ready(function(){
             chrome.storage.sync.set({"selected": property});
           };
 
-
           //get new "selected" value
           var selectedName = items["selected"];
           //display objects in the radio_list div
           var newDiv = document.createElement("div");
           newDiv.innerHTML =
-          "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><a href='#' data-toggle='popover' data-placement='left' data-content='<b>Link:</b><div id=&#39;content&#39;>https://www.amazon.com/?&tag=feraud-20</div> <br/><b>Affiliate ID:</b><br/>"+items[property]+"' data-html='true' class='link-box'  data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-link'></i></a>"
+          "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><a href='#' data-toggle='popover' data-trigger='focus' data-placement='left' data-content='<b>Affiliate ID:</b><br/>"+items[property]+"' class='link-box' data-html='true'  data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-link'></i></a>"
           document.getElementById('radio_list').appendChild(newDiv);
 
           $('[data-toggle="popover"]').popover();
