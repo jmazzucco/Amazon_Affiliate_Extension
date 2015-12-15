@@ -48,6 +48,10 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
   border-radius: 1px;
 }
 
+.form-container {
+  margin-bottom: 25px;
+}
+
 #radio_list > div {
   display: inline-block;
   width: 100%;
@@ -117,18 +121,16 @@ input + label:hover, button, #save {
   border-radius: 5px;
   background-color: grey;
   cursor: pointer;
-  opacity: 0.2;
   padding: 0 4px;
   margin-left: 3px;
+  background-color: rgba(80,80,80,0.8);
 }
 
-.delete-box:hover{
-  opacity: 1;
-  background-color: #e74c3c;
+.delete-box:hover, .link-box:hover{
+  background-color: rgba(80,80,80,1);
 }
 
-.link-box:hover{
-  opacity: 1;
+.delete-box:active, .link-box:active{
   background-color: #000;
 }
 

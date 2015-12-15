@@ -8,13 +8,10 @@ $(document).ready(function(){
     //if all list items have been deleted, set the value of "selected" to "none"
     if (Object.keys(items).length === 1) {
       chrome.storage.sync.set({"selected": "none"});
-
-        //fix - error when style = null
-       document.getElementById('description_box').style.display = "block";
+      document.getElementById('description_box').style.display = "block";
     } else {
-       document.getElementById('description_box').style.display = "none";
+      document.getElementById('description_box').style.display = "none";
     };
-    var selectedName = items["selected"];
 
     if(items){
       //clear all child elements in 'radio_list' div
@@ -26,6 +23,13 @@ $(document).ready(function(){
         //ignore "selected" object
         if(!(property === "selected")) {
 
+          //if 'selected' value doesn't exist as a key in items array, set first object key as new 'selected value'
+          if (!items[items.selected]){
+            items["selected"] = property;
+            chrome.storage.sync.set({"selected": property});
+          }
+
+          var selectedName = items["selected"];
           //auto-select the first property
           if (items["selected"] === "none") {
 
@@ -36,20 +40,16 @@ $(document).ready(function(){
             chrome.storage.sync.set({"selected": property});
           };
 
+
           //get new "selected" value
           var selectedName = items["selected"];
           //display objects in the radio_list div
           var newDiv = document.createElement("div");
           newDiv.innerHTML =
-          "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><a href='#' data-toggle='popover' data-placement='left' data-content='<b>Link:</b><div id=&#39;content&#39;>https://www.amazon.com/?&tag=feraud-20</div> <br/><b>Affiliate ID:</b><br/>"+items[property]+"' data-html='true' class='link-box' data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-link'></i></a>"
+          "<input type='radio' class='items' name='radio_items' id='"+property+"'/><label for='"+property+"'><span></span>"+property+"</label><button class='delete-box' id='"+property+"'><i class='but-icon fa fa-lg fa-times'></i></button><a href='#' data-toggle='popover' data-placement='left' data-content='<b>Link:</b><div id=&#39;content&#39;>https://www.amazon.com/?&tag=feraud-20</div> <br/><b>Affiliate ID:</b><br/>"+items[property]+"' data-html='true' class='link-box'  data-param='"+items[property]+"'><i class='but-icon fa fa-lg fa-link'></i></a>"
           document.getElementById('radio_list').appendChild(newDiv);
 
-          // if ($('.main-container')){
-           // $('.main-container').css({"backgroundColor": "rgba(0,0,255,0.50)"});
-           $('[data-toggle="popover"]').popover();
-          // }
-
-
+          $('[data-toggle="popover"]').popover();
 
           //set radio button of selected object as checked
           if (document.getElementById(property).id === selectedName){
@@ -59,13 +59,8 @@ $(document).ready(function(){
       };
      };
 
-     // var totalItems = document.getElementsByClassName('items');
-     // if (totalItems.length <= 0){
-
-     // }
 
     var urlParam = items[items.selected];
-    // console.log (urlParam)
     sendMessage(urlParam);
 
     onclickEvents();
@@ -159,7 +154,7 @@ function onclickEvents(){
         }
 
       } else {
-        //return if param doesn't exists in the given link
+        // return if param doesn't exists in the given link
         error.innerHTML = "Affiliate link is invalid";
         return;
       };
@@ -167,6 +162,7 @@ function onclickEvents(){
       //create new object with name and param and save it to storage
 
       var newObj = {};
+
       newObj[name] = param;
       chrome.storage.sync.set(newObj);
 
