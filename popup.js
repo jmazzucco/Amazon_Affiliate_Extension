@@ -93,9 +93,17 @@ function onclickEvents(){
     }
   })(i);
 
-  function getParamFromLink(link){
-    var tagindex = link.indexOf('tag');
+  String.prototype.regexIndexOf = function(regex, startpos) {
+    var indexOf = this.substring(startpos || 0).search(regex);
+    return (indexOf >= 0) ? (indexOf + (startpos || 0)) : indexOf;
+  }
 
+  function getParamFromLink(link){
+    console.log(link);
+    console.log(link.regexIndexOf(/tag=/, 0));
+    // var tagindex = link.match(/tag/i);
+    // console.log(link);
+    // console.log(tagindex);
     //return false if the link does not contain 'tag'
     if(tagindex == -1) {return false};
 
@@ -119,9 +127,9 @@ function onclickEvents(){
     error.innerHTML = "";
   }
 
-  function truncate(name) {
-    return name.substring(0, 18) + "...";
-  }
+  // function truncate(name) {
+  //   return name.substring(0, 18) + "...";
+  // }
 
   document.getElementById('save').onclick = function() {
     var totalItems = document.getElementsByClassName('items')
@@ -131,7 +139,7 @@ function onclickEvents(){
 
     if (totalItems.length >= 7){
       error.innerHTML = "Max of 7 affiliates"
-          return;
+      return;
     }
 
     //both inputs should have a value
