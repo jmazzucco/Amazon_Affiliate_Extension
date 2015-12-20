@@ -1,3 +1,5 @@
+// the extension seems to be crashing the browser. Add code that only adds listeners to the active tab, not all tabs
+
 var param;
 var changeUrl = false;
 var amazonStatus = false;

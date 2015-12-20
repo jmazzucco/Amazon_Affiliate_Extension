@@ -98,27 +98,47 @@ function onclickEvents(){
     return (indexOf >= 0) ? (indexOf + (startpos || 0)) : indexOf;
   }
 
+
   function getParamFromLink(link){
-    console.log(link);
-    console.log(link.regexIndexOf(/tag=/, 0));
-    // var tagindex = link.match(/tag/i);
-    // console.log(link);
-    // console.log(tagindex);
-    //return false if the link does not contain 'tag'
-    if(tagindex == -1) {return false};
+    var tagindex = link.regexIndexOf(/tag=/i, 0);
 
-    //get substring of all characters following and including 'tag'
-    var firstSub = link.substring(tagindex + 3);
+    if (tagindex > -1){
+      //get substring of all characters following and including 'tag='
+      var firstSub = link.substring(tagindex + 4);
 
-    //get index of first occurance of '&' in substring
-    var ampIndex = firstSub.indexOf('&');
+      //get index of first occurance of '&' in substring
+      var ampIndex = firstSub.indexOf('&');
 
-    if (ampIndex != -1){
-      var finalSub = firstSub.substring(3, ampIndex);
-    }else{
-      return firstSub;
+      if (ampIndex != -1){
+        var finalSub = firstSub.substring(0, ampIndex);
+      }else{
+        return firstSub;
+      }
+
+    }else if (link.regexIndexOf(/tag%3D/i, 0) > -1){
+      tagindex = link.regexIndexOf(/tag%3D/i, 0);
+
+      //get substring of all characters following and including 'tag%3D'
+      var firstSub = link.substring(tagindex + 6);
+
+      //get index of first occurance of '%' in substring
+      var percentIndex = firstSub.indexOf('%');
+
+      if (percentIndex != -1){
+        var finalSub = firstSub.substring(0, percentIndex);
+      }else{
+        return firstSub;
+      }
+
     }
-    return finalSub;
+
+    if(tagindex === -1) {
+      //return false if the link does not contain "tag=" or "tag%3D"
+      return false
+    }else{
+      return finalSub;
+    }
+
   };
 
 
@@ -126,10 +146,6 @@ function onclickEvents(){
     document.getElementById("form").reset();
     error.innerHTML = "";
   }
-
-  // function truncate(name) {
-  //   return name.substring(0, 18) + "...";
-  // }
 
   document.getElementById('save').onclick = function() {
     var totalItems = document.getElementsByClassName('items')
