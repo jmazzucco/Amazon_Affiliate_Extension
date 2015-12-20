@@ -14,8 +14,11 @@ var amazonStatus = false;
 
   //if the previous URL did not contain "www.amazon.com", the param needs to be added
   }else if((changeInfo.url) && (changeInfo.url.indexOf("www.amazon.com") > -1) && (amazonStatus === false)){
+
+    if(changeInfo.url.indexOf(param) === -1){
       changeUrl = true;
       amazonStatus = true;
+    };
 
   //if the previous URL did contain "www.amazon.com", the param does not need to be added
   }else if ((changeInfo.url) && (changeInfo.url.indexOf("www.amazon.com") == -1)){
@@ -58,7 +61,6 @@ function newParam(){
     function(request, sender, sendResponse) {
      if (request.param != param){
       param = request.param
-      console.log("onMessage " + param)
       listeners(param);
      };
   });
