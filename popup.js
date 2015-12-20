@@ -98,7 +98,6 @@ function onclickEvents(){
     return (indexOf >= 0) ? (indexOf + (startpos || 0)) : indexOf;
   }
 
-
   function getParamFromLink(link){
     var tagindex = link.regexIndexOf(/tag=/i, 0);
 

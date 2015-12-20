@@ -47,7 +47,6 @@ var reload = function(addedTabId, removedTabId){
 function paramFromStorage(){
   chrome.storage.sync.get(null, function(items) {
     param = (items[items.selected]);
-    console.log("storage " + param)
     listeners(param);
   });
   newParam();
