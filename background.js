@@ -78,7 +78,7 @@ function listeners(param){
   };
 
   //remove all listeners (except for onMessage) and add them again using the new parameter
-  function removeListeners(){
+  function refreshListeners(){
     chrome.tabs.onUpdated.removeListener(updatedListener);
     chrome.tabs.onReplaced.removeListener(reload);
 
@@ -89,7 +89,7 @@ function listeners(param){
     };
   }
 
-  removeListeners();
+  refreshListeners();
 };
 
 
