@@ -7,32 +7,36 @@ var amazonStatus = false;
   var updatedListener = function(tabId,changeInfo,tab){
   //need to add: if url already contains a URL param but the param doesn't match the one being passed from addListener, remove the old param (everything proceeding the '?') and add the new one.
 
-  //always add the parameter if the URL is "http://www.amazon.com/"
-  if (changeInfo.url == "http://www.amazon.com/"){
-    changeUrl = true;
-    amazonStatus = true;
+  if (changeInfo.status == 'loading') {
 
-  //if the previous URL did not contain "www.amazon.com", the param needs to be added
-  }else if((changeInfo.url) && (changeInfo.url.indexOf("www.amazon.com") > -1) && (amazonStatus === false)){
-
-    if(changeInfo.url.indexOf(param) === -1){
+    //always add the parameter if the URL is "http://www.amazon.com/"
+    if (changeInfo.url == "http://www.amazon.com/"){
       changeUrl = true;
       amazonStatus = true;
+
+    //if the previous URL did not contain "www.amazon.com", the param needs to be added
+    }else if((changeInfo.url) && (changeInfo.url.indexOf("www.amazon.com") > -1) && (amazonStatus === false)){
+
+      if(changeInfo.url.indexOf(param) === -1){
+        changeUrl = true;
+        amazonStatus = true;
+      };
+
+    //if the previous URL did contain "www.amazon.com", the param does not need to be added
+    }else if ((changeInfo.url) && (changeInfo.url.indexOf("www.amazon.com") == -1)){
+        amazonStatus = false;
     };
 
-  //if the previous URL did contain "www.amazon.com", the param does not need to be added
-  }else if ((changeInfo.url) && (changeInfo.url.indexOf("www.amazon.com") == -1)){
-      amazonStatus = false;
-  };
-
-  //send param to content.js if changeUrl is True and the page has finished loading
-  if ((changeInfo.status == 'complete') && (changeUrl == true)) {
-    chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-       chrome.tabs.sendMessage(tabs[0].id, {param: param}, function(response) {
-       });
-    });
-    changeUrl = false;
   }
+    //send param to content.js if changeUrl is True and the page has finished loading
+    if ((changeInfo.status == 'complete') && (changeUrl == true)) {
+      chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
+         chrome.tabs.sendMessage(tabs[0].id, {param: param}, function(response) {
+         });
+      });
+      changeUrl = false;
+    }
+
 };
 
 //reload current tab
