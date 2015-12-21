@@ -13,7 +13,7 @@
           "webNavigation"
         ],
 	"background": {
- 		"scripts": ["bootstrap.min.css", "background.js"]
+ 		"scripts": ["background.js"]
 	},
 
 	"browser_action": {
