@@ -160,8 +160,8 @@ function onclickEvents(){
     //both inputs should have a value
     if(name && link){
 
-       if(name.length >= 17){
-         error.innerHTML = "Name cannot be over 16 characters"
+       if(name.length > 21){
+         error.innerHTML = "Name cannot be over 21 characters"
          return;
         };
 

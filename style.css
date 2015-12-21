@@ -261,3 +261,7 @@ form {
   padding-top: 9px;
   color: #fff;
 }
+
+.radio-labels{
+  max-width: 80%
+}
