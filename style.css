@@ -18,7 +18,7 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
   display: inline-block;
   width: 100%;
   font-size: 1.3em;
-  background-color:rgb(62,62,62);
+  background-color: #3E3E3E;
 }
 
 #logo {
@@ -137,9 +137,13 @@ input + label:hover, button, #save {
   background-color: #000;
 }
 
-.fa-times, .fa-user {
+.fa-times, .fa-info {
   font-size: 3px;
   color: #fff;
+}
+
+.fa-info {
+  padding: 0 3px;
 }
 
 .fa-lg {
@@ -224,7 +228,7 @@ form {
   left: 10px;
   bottom: 9px;
   width: 70%;
-  max-width: 300px; /* avoid rotation causing ugly appearance at large container widths */
+  max-width: 300px;
   max-height: 100px;
   height: 55%;
   -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
@@ -250,4 +254,10 @@ form {
 #description_box p {
   margin-left: 25px;
   font-family: helvetica, sans-serif;
+}
+
+.fa-users {
+  padding: 7px;
+  padding-top: 9px;
+  color: #fff;
 }
