@@ -8,7 +8,9 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
   height: 100%;
 }
 
-.header{
+/*-----------header-------------*/
+
+.header {
   padding: 10px 0;
   border-top-right-radius: 2px;
   border-top-left-radius: 2px;
@@ -40,6 +42,8 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
   margin-top: 8px;
 }
 
+/*-----radio button form------*/
+
 #radio_list, .form-container {
   width: 275px;
   margin: 15px;
@@ -68,8 +72,7 @@ html,body,div,span,applet,object,iframe,a,abbr,acronym,address,big,cite,code,del
   border-bottom: 0
 }
 
-/*-----radio buttons and labels
--------from http://codepen.io/deitrick/pen/grGHa */
+/*-----radio buttons and labels - from http://codepen.io/deitrick/pen/grGHa */
 input[type="radio"] {
   display:none;
 }
@@ -112,9 +115,9 @@ input + label:hover, button, #save {
    background-image: url(http://dev.bowdenweb.com/a/i/cons/icomoon/checkmark.png);
 }
 
-/*--------Delete Button--------*/
+/*--------Delete and ID Buttons--------*/
 
-.delete-box, .link-box {
+.delete-box, .id-box {
   display: inline-block;
   float: right;
   border: none;
@@ -126,11 +129,11 @@ input + label:hover, button, #save {
   background-color: rgba(80,80,80,0.8);
 }
 
-.delete-box:hover, .link-box:hover{
+.delete-box:hover, .id-box:hover{
   background-color: rgba(80,80,80,1);
 }
 
-.delete-box:active, .link-box:active{
+.delete-box:active, .id-box:active{
   background-color: #000;
 }
 
@@ -144,7 +147,7 @@ input + label:hover, button, #save {
   vertical-align: 0;
 }
 
-/*----------Form---------------*/
+/*----------Input Form---------------*/
 
 form {
   display:inline-block;
@@ -165,40 +168,6 @@ form {
 
 #name {
   margin-top: 20px;
-}
-
-.footer {
-  background-color: rgb(80,80,80);
-  border-bottom-right-radius: 2px;
-  border-bottom-left-radius: 2px;
-  height: 25px;
-  padding: 3px;
-}
-
-.footer * {
-  display: inline-block;
-  float: right;
-  color: rgb(115, 115, 115);
-  padding: 2px;
-}
-
-.footer a{
-  padding: 0;
-}
-
-.footer i {
-  font-size: 1.3em;
-  padding: 0 3px;
-}
-
-.footer i:hover{
-  color: rgb(187, 187, 187);
-}
-
-.footer p {
- margin-bottom: 0;
- font-size: 0.8em;
- padding-bottom: 0;
 }
 
 .info {
