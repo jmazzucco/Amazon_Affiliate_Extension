@@ -10,7 +10,7 @@ var amazonStatus = false;
   if (changeInfo.status == 'loading') {
 
     //always add the parameter if the URL is "http://www.amazon.com/"
-    if (changeInfo.url == "http://www.amazon.com/"){
+    if (changeInfo.url === "https://www.amazon.com/" || (changeInfo.url === "http://www.amazon.com/")){
       changeUrl = true;
       amazonStatus = true;
 

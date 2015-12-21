@@ -112,7 +112,7 @@ input + label:hover, button, #save {
 .light input[type="radio"]:checked + label span {
    box-shadow: 0 0 2px rgba(0,0,0,0.5);
    background-color: rgba(102, 175, 233, 0.51);
-   background-image: url(http://dev.bowdenweb.com/a/i/cons/icomoon/checkmark.png);
+   background-image: url(checkmark.png);
 }
 
 /*--------Delete and ID Buttons--------*/
@@ -251,4 +251,3 @@ form {
   margin-left: 25px;
   font-family: helvetica, sans-serif;
 }
-
