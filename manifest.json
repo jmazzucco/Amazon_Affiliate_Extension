@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
-  "name": "Amazon Portal",
-  // "icons": {"128": "icon.png"},
+  "name": "Amazon Affiliates",
+  "icons": {"128": "images/tab-icon.png"},
   "description": "Automatically adds an Amazon Portal parameter to the URL when visiting Amazon.com",
   "version": "0.1",
   "permissions": [
@@ -18,7 +18,7 @@
 
 	"browser_action": {
 	  "default_icon": "images/tab-icon.png",
-	  "default_title": "Popup test",
+	  "default_title": "Amazon Affiliates",
 	  "default_popup": "popup.html"
 	},
 
