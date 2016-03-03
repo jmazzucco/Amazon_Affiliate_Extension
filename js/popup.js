@@ -4,9 +4,9 @@ $(document).ready(function(){
 
   //get all objects in storage
   chrome.storage.sync.get(null, function(items) {
-
+    console.log(Object.keys(items));
     //if all list items have been deleted, set the value of "selected" to "none"
-    if (Object.keys(items).length === 1) {
+    if (Object.keys(items).length <= 1) {
       chrome.storage.sync.set({"selected": "none"});
       document.getElementById('description_box').style.display = "block";
     } else {
