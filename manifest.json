@@ -2,8 +2,8 @@
   "manifest_version": 2,
   "name": "Amazon Affiliates",
   "icons": {"128": "images/tab-icon.png"},
-  "description": "Automatically adds an Amazon Portal parameter to the URL when visiting Amazon.com",
-  "version": "0.1",
+  "description": "Automatically adds an Amazon Portal parameter to the URL when visiting Amazon.com.com",
+  "version": "0.2",
   "permissions": [
           "webRequest",
           "webRequestBlocking",
