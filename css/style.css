@@ -254,6 +254,8 @@ form {
 #description_box p {
   margin-left: 25px;
   font-family: helvetica, sans-serif;
+  font-size: 12px;
+  line-height: 1.5;
 }
 
 .fa-users {
