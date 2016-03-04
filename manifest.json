@@ -3,7 +3,7 @@
   "name": "Amazon Affiliates",
   "icons": {"128": "images/tab-icon.png"},
   "description": "Stores Amazon Affiliate IDs and adds a selected ID to the URL when visiting amazon.com.   ",
-  "version": "0.2",
+  "version": "0.3",
   "permissions": [
           "webRequest",
           "webRequestBlocking",
